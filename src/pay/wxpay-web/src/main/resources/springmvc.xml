@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+    xmlns:context="http://www.springframework.org/schema/context"
+
+    xsi:schemaLocation="
+
+        http://www.springframework.org/schema/beans
+
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+
+        http://www.springframework.org/schema/mvc
+
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+
+        http://www.springframework.org/schema/context
+
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- <context:annotation-config/> -->
+<mvc:annotation-driven/>
+    <context:component-scan base-package="com.cyberbay.frog.pay.wxpay.controller" />
+
+   
+
+    
+ <context:property-placeholder location="classpath:config.properties"/>
+<bean id="mappingJacksonHttpMessageConverter"
+
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+
+        <property name="supportedMediaTypes">
+
+            <list>
+
+                <value>application/json;charset=UTF-8</value>
+
+            </list>
+
+        </property>
+
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+
+        <property name="messageConverters">
+
+            <list>
+
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+
+            </list>
+
+        </property>
+
+    </bean>
+
+    
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+<!-- 设置上传文件的最大尺寸为5MB -->
+
+<property name="maxUploadSize">
+
+<value>5242880</value>
+
+</property>
+
+</bean>
+
+ 
+
+ 
+
+ 
+
+</beans>
