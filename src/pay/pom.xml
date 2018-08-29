@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cyberbay.frog</groupId>
+	<artifactId>pay</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>alipay-api</module>
+		<module>alipay-core</module>
+		<module>alipay-web</module>
+		<module>common-web</module>
+		<module>common-api</module>
+		<module>common-core</module>
+    <module>wxpay-api</module>
+    <module>wxpay-core</module>
+    <module>wxpay-web</module>
+  </modules>
+
+</project>

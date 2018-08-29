@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cyberbay.frog.pay.wxpay.dao.UserMapper">
+	<!-- <resultMap type="com.cyberbay.frog.pay.alipay.entity。User" id="user"> 
+		<result column="name" property="name"/> <result column="id" property="id"/> 
+		<result column="age" property="age"/> </resultMap> -->
+
+	<select id="findUserByName" resultType="User" parameterType="java.lang.String">
+		SELECT * FROM user
+	</select>
+</mapper>  
