@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd"
+		default-autowire="byName">
+		
+	<context:component-scan base-package="org.dubbo.server.service.**" />
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="hehe_consumer" organization="risk.im.jd.com"
+		owner="lvsheng" />
+
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry id="registry" address="10.28.163.15:6060" />
+
+	<dubbo:protocol id="protocol" name="dubbo" port="25000"
+		heartbeat="0" threadpool="cached" threads="512" />
+
+	<dubbo:provider id="im.riskctrl.dubbo.provider" timeout="5000"
+		retries="5" loadbalance="roundrobin" cluster="failover" registry="registry">
+	</dubbo:provider>
+
+	<!-- 生成远程服务代理，可以像使用本地bean一样使用demoService -->
+	<!-- <dubbo:service interface="org.dubbo.server.api.DemoService" ref="demoService"
+		provider="im.riskctrl.dubbo.provider" >
+	</dubbo:service> -->
+
+</beans>  
